@@ -14,22 +14,29 @@
 <body>
   <header class="flex justify-between items-center bg-[#303030] border border-white h-[10vh]">
     <figure class="flex-shrink-0">
-      <img src="/assets/imgs/Moviestack_isotipo.png" alt="MovieStackLogo" class="h-16">
+      <img src="/assets/imgs/Moviestack_isotipo.png" alt="MovieStackLogo" class="h-16 bg-white rounded-full w-16">
     </figure>
-    <h1 class=" text-white text-xl">MOVIESTACK</h1>
+    <h2 class="ml-4 text-white text-xl">MOVIESTACK</h2>
     <nav class="flex flex-grow justify-end">
-        <a href="/index.html" class="text-[#E8E8E8] mr-6">Home</a>
-        <a href="#" class="text-[#A9A9A9] border mr-6">Movies</a>
-        <a href="#" class="text-[#A9A9A9] mr-6">Favs</a>
+      <a href="/index.html" class="text-[#A9A9A9] mr-6">Home</a>
+      <a href="#" class="text-[#E8E8E8] border mr-6">Movies</a>
+      <a href="#" class="text-[#A9A9A9] mr-6">Favs</a>
     </nav>
 </header>
-  <main class="flex flex-col justify-center items-center bg-[#212121]">
+  <main class="flex flex-col justify-center items-center bg-[#212121] h-[auto]">
     <section class="bg-[#ADADAD] mt-10 mb-10 w-[85%] flex justify-center items-center ">
       <h1 class="text-6xl pt-4 pb-4">MOVIES</h1>
     </section>
-    <p class="text-white mb-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa ipsum asperiores corrupti velit quaerat ut inventore ab quas doloribus quidem maxime ea, laboriosam repudiandae! Harum, alias. Laborum adipisci aperiam odio?</p>
-    <div class="flex flex-row flex-grow w-full justify-around mb-20 flex-wrap" id="contenedor">
+    <div id="contenedorSearchs">
+      <label for="">
+        <input type="text" id="search" placeholder="Buscar películas...">
+      </label>
+      <select name="Genre" id="selectGeneros">
+      </select>
+    </div>
     
+    <div class="flex flex-row flex-grow w-full justify-around mb-20 flex-wrap mt-10" id="contenedor">
+      
     </div>
   </main>
   <footer class="flex justify-center bg-[#303030] border border-white h-20 items-center h-[10vh]">
