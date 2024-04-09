@@ -87,4 +87,3 @@ document.getElementById('selectGeneros').addEventListener('change', function(){
   generoActual = this.value; // Actualizar el género seleccionado actualmente
   renderizarPeliculas(); // Renderizar las películas según el género actual y el texto de búsqueda
 });
-

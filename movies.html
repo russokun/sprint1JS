@@ -12,23 +12,23 @@
   <title>MovieStack</title>
 </head>
 <body>
-  <header class="flex justify-between items-center bg-[#303030] border border-white h-[10vh]">
+  <header class="flex justify-between items-center bg-[#303030] border border-white h-[15vh]">
     <figure class="flex-shrink-0">
       <img src="/assets/imgs/Moviestack_isotipo.png" alt="MovieStackLogo" class="h-16 bg-white rounded-full w-16">
     </figure>
-    <h2 class="ml-4 text-white text-xl">MOVIESTACK</h2>
-    <nav class="flex flex-grow justify-end">
-      <a href="/index.html" class="text-[#A9A9A9] mr-6">Home</a>
-      <a href="#" class="text-[#E8E8E8] border mr-6">Movies</a>
-      <a href="#" class="text-[#A9A9A9] mr-6">Favs</a>
+    <h2 class="ml-4 text-white text-3xl letra">MOVIESTACK</h2>
+    <nav class="flex flex-grow justify-end flex-wrap">
+      <a href="/index.html" class="text-[#A9A9A9] inline-block bg-black hover:bg-[#D2CCFF] text-white font-bold py-2 px-3 rounded mr-6">Home</a>
+      <a href="#" class="text-[#E8E8E8] inline-block bg-white hover:bg-[#D2CCFF] text-black font-bold py-2 px-3 rounded mr-6">Movies</a>
+      <a href="#" class="text-[#A9A9A9] inline-block bg-black hover:bg-[#D2CCFF] text-white font-bold py-2 px-4 rounded mr-6">Favs</a>
     </nav>
 </header>
   <main class="flex flex-col justify-center items-center bg-[#212121] h-[auto]">
     <section class="bg-[#ADADAD] mt-10 mb-10 w-[85%] flex justify-center items-center ">
-      <h1 class="text-6xl pt-4 pb-4">MOVIES</h1>
+      <h1 class="text-8xl pt-4 pb-4 letra">MOVIES</h1>
     </section>
     <div id="contenedorSearchs">
-      <label for="">
+      <label>
         <input type="text" id="search" placeholder="Buscar películas...">
       </label>
       <select name="Genre" id="selectGeneros">
@@ -39,8 +39,8 @@
       
     </div>
   </main>
-  <footer class="flex justify-center bg-[#303030] border border-white h-20 items-center h-[10vh]">
-    <h2 class="text-white ">MindHub-Cohort N*54</h2>
+  <footer class="flex justify-center bg-[#303030] border border-white h-20 items-center h-[5vh]">
+    <h2 class="text-white letra text-3xl">MindHub-Cohort N*54</h2>
   </footer>
   <script src="./moviestack.js"></script>
   <script src="./index.js"></script>
