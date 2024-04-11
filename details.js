@@ -1,12 +1,11 @@
 
 // Obtener los parámetros de búsqueda de la URL
-const url = new URLSearchParams(window.location.search);
-const id = url.get('id');
+const url = new URLSearchParams(window.location.search)
+const id = url.get('id')
 
 let movie = (array, key) => array.find( obj=> obj.id == key)
-console.log(movie(movies, id))
 let crearCard = (objeto) => {
-  // Crear el HTML de la card
+  
   let cardHTML = `
   <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg mt-15 mb-5 max-h-[calc(100vh-200px)] overflow-auto">
         <img src="${objeto.image}" alt="${objeto.title}" class="w-64 h-auto float-left mr-8 mb-4">
@@ -54,15 +53,8 @@ let crearCard = (objeto) => {
             <td>USD ${objeto.revenue}</td>
           </tr>
         </table>
-      </div>`;
-  return cardHTML; // Devolver el HTML de la card
-};
-
+      </div>`
+  return cardHTML
+}
 let contenedor = document.getElementById("main")
 contenedor.innerHTML = crearCard(movie(movies, id))
-//<img class="w-full h-56 object-cover object-center" src="${objeto.image}" alt="${objeto.title}">
-//          <div class="px-6 py-4">
-//              <h3 class="text-xl font-semibold text-gray-800 mb-2">${objeto.title}</h3>
-//              <h4 class="text-xl font-semibold text-gray-800 mb-2">${objeto.tagline}</h4>
-//              <p class="text-gray-600 text-base">${objeto.overview}</p>
-//          </div>

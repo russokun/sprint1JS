@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@368&display=swap');
-@media screen and (max-width: 500px) {
-  header{
-    height: 20vh; 
-  }
-}
 *{
   padding: 0;
   margin: 0;
