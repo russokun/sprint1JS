@@ -60,9 +60,3 @@ let crearCard = (objeto) => {
 
 let contenedor = document.getElementById("main")
 contenedor.innerHTML = crearCard(movie(movies, id))
-//<img class="w-full h-56 object-cover object-center" src="${objeto.image}" alt="${objeto.title}">
-//          <div class="px-6 py-4">
-//              <h3 class="text-xl font-semibold text-gray-800 mb-2">${objeto.title}</h3>
-//              <h4 class="text-xl font-semibold text-gray-800 mb-2">${objeto.tagline}</h4>
-//              <p class="text-gray-600 text-base">${objeto.overview}</p>
-//          </div>
