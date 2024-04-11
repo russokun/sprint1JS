@@ -33,7 +33,7 @@ const optionAll = document.createElement('option')
 optionAll.text = 'All'
 optionAll.value = 'all'
 optionAll.selected = true
-document.getElementById('selectGeneros').add(optionAll)
+selectGenero.add(optionAll)
 // Itera a través de los géneros y crea las opciones
 generosUnicos.forEach((genero) => {
   const option = document.createElement("option")
@@ -44,9 +44,9 @@ generosUnicos.forEach((genero) => {
 // Variable para almacenar el género seleccionado actualmente
 let generoActual = 'all'
 // Trigger del evento change para mostrar todas las películas por defecto al seleccionar "All"
-document.getElementById('selectGeneros').dispatchEvent(new Event('change'))
+selectGenero.dispatchEvent(new Event('change'))
 // Trigger del evento input para mostrar todas las películas por defecto al cargar la página
-document.getElementById('search').dispatchEvent(new Event('input'))
+selectGenero.dispatchEvent(new Event('input'))
 // Función para renderizar las películas según el género actual y el texto de búsqueda
 function renderizarPeliculas() {
   const textoBusqueda = document.getElementById('search').value.trim().toLowerCase()
