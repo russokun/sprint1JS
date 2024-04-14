@@ -13,6 +13,9 @@
 }
 
 .container input {
+  display: block;
+  right: 0;
+  top: 0;
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -21,7 +24,7 @@
 }
 
 .container {
-  display: flex;
+  display: block;
   right: 0;
   width: 60px;
   position: absolute;
@@ -39,7 +42,7 @@
   fill: #666;
 }
 
-.container svg:hover {
+.container svg:active {
   transform: scale(1.5);
 }
 

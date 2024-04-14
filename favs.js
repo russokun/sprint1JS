@@ -1,5 +1,7 @@
-import { movies } from './modulos/fetchMovies.js'
+import { movies } from "./modulos/fetchMovies.js";
+
 document.addEventListener('moviesLoaded', () => {
+  const favs = JSON.parse(localStorage.getItem('favoritos')) || [];
   let Card = (title, image, tagline, overview, id) => {
     // Limitar la descripción (overview) a 50 caracteres
     const overviewLimitado = overview.length > 50 ? overview.slice(0, 50) + '...' : overview
@@ -29,68 +31,7 @@ document.addEventListener('moviesLoaded', () => {
     })
     return cardsHTML
   }
-  const contenedor = document.getElementById("contenedor")
-  contenedor.innerHTML = CardsMovies(movies)
-  //sprint2
-  // Utilizamos flat() y map() para obtener una lista plana de todos los géneros de todas las películas
-  const todosLosGeneros = movies.map(pelicula => pelicula.genres).flat()
-  // Utilizamos Set para eliminar duplicados y luego el operador de propagación para descomponer los géneros únicos
-  const generosUnicos = [...new Set(todosLosGeneros)]
-  const selectGenero = document.getElementById("selectGeneros");
-  const searcher = document.getElementById('search')
-  // Agregar una opción "All" por defecto y seleccionarla en el select de géneros
-  const optionAll = document.createElement('option');
-  optionAll.text = 'All';
-  optionAll.value = 'all';
-  optionAll.selected = true;
-  selectGenero.add(optionAll);
-  // Itera a través de los géneros y crea las opciones
-  generosUnicos.forEach((genero) => {
-    const option = document.createElement("option");
-    option.value = genero; // El valor de la opción es el género
-    option.textContent = genero; // El texto visible de la opción es el género
-    selectGenero.appendChild(option); // Agrega la opción al select
-  });
-  // Variable para almacenar el género seleccionado actualmente
-  let generoActual = 'all';
-  // Trigger del evento change para mostrar todas las películas por defecto al seleccionar "All"
-  selectGenero.dispatchEvent(new Event('change')); 
-  //dispatch event es como insta despachar el event, tirarlo "default"
-  // Trigger del evento input para mostrar todas las películas por defecto al cargar la página
-  selectGenero.dispatchEvent(new Event('input'));
-  // Función para renderizar las películas según el género actual y el texto de búsqueda
-  function renderizarPeliculas() {
-    const textoBusqueda = document.getElementById('search').value.toLowerCase();
-    // Filtrar las películas según el género actual y el texto de búsqueda
-    let peliculasFiltradas = [];
-    if (generoActual === 'all') {
-      peliculasFiltradas = movies;
-    }
-    else {
-      peliculasFiltradas = movies.filter(movie => movie.genres.includes(generoActual));
-    }
-    peliculasFiltradas = peliculasFiltradas.filter(movie => movie.title.toLowerCase().includes(textoBusqueda));
-    // Renderizar las películas filtradas
-    const contenedor = document.getElementById("contenedor");
-    contenedor.innerHTML = CardsMovies(peliculasFiltradas);
-  }
-  // Event listener para detectar cambios en el campo de búsqueda
-  searcher.addEventListener('input', renderizarPeliculas);
-  // Event listener para detectar cambios en el select de géneros
-  selectGenero.addEventListener('change', function(){
-    generoActual = this.value; // Actualizar el género seleccionado actualmente
-    renderizarPeliculas(); // Renderizar las películas según el género actual y el texto de búsqueda
-  });
-  //sprint3
-  //agregamos propiedad de favs a movies
-  movies.forEach(movie =>{
-    movie.favs = false
-  })
-  
-  
-  let favs = JSON.parse(localStorage.getItem('favoritos')) || [];
   const checkboxes = document.querySelectorAll('input[type=checkbox]');
-
   for (let checkbox of checkboxes) {
     const id = checkbox.getAttribute('id');
     const movie = movies.find(movie => movie.id === id);
@@ -115,4 +56,7 @@ document.addEventListener('moviesLoaded', () => {
         console.log(favs);
     });
   }
+  //localStorage.clear('favoritos')
+  const contenedor = document.getElementById("favs")
+  contenedor.innerHTML = CardsMovies(favs)
 })
