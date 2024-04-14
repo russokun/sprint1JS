@@ -59,6 +59,7 @@ document.addEventListener('moviesLoaded', () => {
   // Trigger del evento input para mostrar todas las películas por defecto al cargar la página
   selectGenero.dispatchEvent(new Event('input'));
   // Función para renderizar las películas según el género actual y el texto de búsqueda
+  
   function renderizarPeliculas() {
     const textoBusqueda = document.getElementById('search').value.toLowerCase();
     // Filtrar las películas según el género actual y el texto de búsqueda
@@ -86,33 +87,30 @@ document.addEventListener('moviesLoaded', () => {
   movies.forEach(movie =>{
     movie.favs = false
   })
-  
-  
-  let favs = JSON.parse(localStorage.getItem('favoritos')) || [];
+  let favs = new Set(JSON.parse(localStorage.getItem('favoritos')) || []); // Utiliza un Set en lugar de un array para favs
   const checkboxes = document.querySelectorAll('input[type=checkbox]');
-
   for (let checkbox of checkboxes) {
-    const id = checkbox.getAttribute('id');
-    const movie = movies.find(movie => movie.id === id);
-
+      const id = checkbox.getAttribute('id');
+      const movie = movies.find(movie => movie.id === id);
+  
     // Verificar si la película está en favs y marcar el checkbox si es así
-    if (movie && favs.some(favMovie => favMovie.id === id)) {
-        checkbox.checked = true;
+    if (movie && favs.has(id)) { // has() para verificar la existencia en el Set
+      checkbox.checked = true;
     }
     checkbox.addEventListener('click', (event) => {
-        const id = checkbox.getAttribute('id');
-        const movie = movies.find(movie => movie.id === id);
-        if (movie && !movie.favs) {
-            movie.favs = true;
-            favs.push(movie);
-        } else if (movie && movie.favs) {
-            movie.favs = false;
-            favs = favs.filter(favMovie => favMovie.id !== id);
-        }
-
-        // Guardar los favoritos en localStorage
-        localStorage.setItem('favoritos', JSON.stringify(favs));
-        console.log(favs);
+      const id = checkbox.getAttribute('id');
+      const movie = movies.find(movie => movie.id === id);
+      if (movie && !favs.has(id)) { // Utiliza has() para verificar si la película ya está en favs
+        movie.favs = true;
+        favs.add(id); // Agrega el id al Set favs
+      } else if (movie && favs.has(id)) {
+        movie.favs = false;
+        favs.delete(id); // Elimina el id del Set favs
+      }
+  
+      // Guardar los favoritos en localStorage
+      localStorage.setItem('favoritos', JSON.stringify(Array.from(favs))); // Convierte el Set en un array antes de guardarlo en localStorage
+      
     });
   }
 })
