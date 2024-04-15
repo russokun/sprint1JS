@@ -50,3 +50,11 @@
 .container input:checked ~ svg {
   fill: #ffeb49;
 }
+
+.carousel-image {
+  display: none;
+}
+
+.carousel-image:first-child {
+  display: block;
+}
